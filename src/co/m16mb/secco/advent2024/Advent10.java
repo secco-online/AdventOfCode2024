@@ -37,7 +37,7 @@ public class Advent10 {
 		System.out.println("ANSWER1: " + part1(numberMap));
 		// 629
 		System.out.println("ANSWER2: " + part2(numberMap));
-		//
+		// 1242
 
 	}
 
@@ -115,7 +115,6 @@ public class Advent10 {
 		for (Map.Entry<Point, Integer> entry : scores.entrySet()) {
 
 			Integer val = entry.getValue();
-//			System.out.println(entry);
 			sum += val;
 		}
 

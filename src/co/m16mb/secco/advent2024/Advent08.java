@@ -2,10 +2,8 @@ package co.m16mb.secco.advent2024;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -118,12 +116,6 @@ public class Advent08 {
 	}
 
 	private static record Point(int x, int y) {
-		public List<Point> getNeighbours() {
-			return Arrays.asList(new Point(x, y - 1), new Point(x, y + 1), new Point(x - 1, y), new Point(x + 1, y));
-		}
-	};
-
-	private static record Path(Point startingPoint, Point currentPoint, int currentValue) {
 	};
 
 }
