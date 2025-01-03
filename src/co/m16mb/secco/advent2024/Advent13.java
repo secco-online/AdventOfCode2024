@@ -52,14 +52,13 @@ public class Advent13 {
 			}
 			Game newGame = new Game(buttonAX, buttonAY, buttonAtokens, buttonBX, buttonBY, buttonBtokens, prizeX,
 					prizeY);
-//			System.out.println(newGame);
 			gameList.add(newGame);
 		}
 
 		System.out.println("ANSWER1: " + part1(gameList));
 		// 35255
-		System.out.println("ANSWER2: " + part2(gameList, 0));
-		// TODO 13 p2: 34371 is too low, there must be some rounding error
+		System.out.println("ANSWER2: " + part2(gameList, 10000000000000L));
+		// 87582154060429
 
 	}
 
@@ -150,22 +149,18 @@ public class Advent13 {
 			long prizeX = (correction + game.prizeX);
 			long prizeY = (correction + game.prizeY);
 
-			
-			long upperB =(prizeX * game.buttonAY - game.buttonAX * prizeY);
-			long lowerB =(game.buttonBX * game.buttonAY - game.buttonBY * game.buttonAX);
-			
-			double b = (double)upperB/ lowerB;
-			//System.out.println("b: " + b) ;
-			double a = (prizeY - game.buttonBY * b) / game.buttonAY;
-			//System.out.println("a: " + a) ;
+			long upperB = (prizeX * game.buttonAY - game.buttonAX * prizeY);
+			long lowerB = (game.buttonBX * game.buttonAY - game.buttonBY * game.buttonAX);
 
-			long longA = (long) a;
-			long longB = (long) b;
+			long b = (long) upperB / lowerB;
+			// System.out.println("b: " + b) ;
+			long a = (prizeY - game.buttonBY * b) / game.buttonAY;
+			// System.out.println("a: " + a) ;
 
 			// matching solution if an integer number pressed, no fractions
-			if (b == longB && a == longA) {
-				
-				winningSteps.add(new WinCombination(longA, longB));
+			if (prizeX == a * game.buttonAX + b * game.buttonBX && prizeY == a * game.buttonAY + b * game.buttonBY) {
+				// System.out.println("MATCHES a: " + a + " b: " + b);
+				winningSteps.add(new WinCombination(a, b));
 			}
 		}
 		long sum = 0;
